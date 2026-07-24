@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 from mysite.api import (category, user_profile, sub_category, product,
                         image_product, review, cart, cart_item, favorite, auth)
+from mysite.admin.setup import setup
+
 
 
 wildberies_app = FastAPI(title='FastAPI Wildberies')
+setup(wildberies_app)
+
 wildberies_app.include_router(category.category_router)
 wildberies_app.include_router(user_profile.user_router)
 wildberies_app.include_router(auth.auth_router)
